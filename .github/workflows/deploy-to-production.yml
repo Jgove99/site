@@ -38,14 +38,14 @@ jobs:
         ruby-version: '2.6'
     - name: Build the site
       run: |
-        gem install bundler
+        gem install bundler -v 2.4.22
         bundle config path vendor/bundle
         bundle install
         JEKYLL_ENV=production bundle exec jekyll build --config _config.yml,_config_prod.yml
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        REPOSITORY_NAME: PRODUCTION_ORGANISATION/PRODUCTION_ORGANISATION.github.io
+        REPOSITORY_NAME: jg-test-sdg/jg-test-sdg.github.io
         ACCESS_TOKEN: ${{ secrets.token }}
         BRANCH: main
         FOLDER: _site
